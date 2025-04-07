@@ -24,8 +24,8 @@
             <!-- <div class="tagline">気づいて築く 母娘の DAILY CARE APP</div> -->
         </header>
         
-        <h1 class="headline">きづくで、お子さまの健康管理をサポート</h1>
-        <p class="subheadline">毎日の体調管理とスケジュール管理を、もっと簡単に</p>
+        <h1 class="headline">きづくでお子さまの「なんとなく不調」に気づける毎日を</h1>
+        <p class="subheadline">体調の変化と気象、スケジュールを同時に管理できるみまもりアプリ</p>
         
         <div class="widgets">
             <div class="widget weather-widget">
@@ -51,7 +51,7 @@
             
             <div class="widget calendar-widget">
                 <h3 class="widget-title">カレンダー</h3>
-                <p>あなたのスケジュールがここに表示されます。</p>
+                <p>体調の記録と一緒に確認できるので、無理のないスケジュール調整に役立ちます。</p>
                 <p>※ ログイン後、スケジュールの追加・編集が可能になります。</p>
             </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="features">
             <div class="feature-card">
                 <h3 class="feature-title">体調記録</h3>
-                <p>お子さまの日々の体調を簡単に記録できます。体温、症状、服薬情報などを管理しましょう。</p>
+                <p>低血圧、めまい、月経のつらさなど、「言葉にしづらい体調の変化」を簡単に記録できます。</p>
             </div>
             
             <div class="feature-card">
@@ -69,7 +69,7 @@
             
             <div class="feature-card">
                 <h3 class="feature-title">情報共有</h3>
-                <p>学校や医療機関と必要な情報を簡単に共有。連携して子どもの健康をサポートします。</p>
+                <p>学校や医療機関と必要な情報を簡単に共有。お子さまの日常をサポートします。</p>
             </div>
         </div>
         

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View; // 上部でインポート済でなければ追加
 
 class ConditionController extends Controller
 {
@@ -285,5 +286,48 @@ class ConditionController extends Controller
             // APIエラー時は天気情報なしで続行
             return null;
         }
+    }
+
+    /**
+     * 1日の振り返り入力フォームを表示
+     */
+    public function lookBackCreate(ChildSurvey $childSurvey)
+    {
+        $today = Carbon::today();
+        $dayOfWeek = ['日曜', '月曜', '火曜', '水曜', '木曜', '金曜', '土曜'][$today->dayOfWeek];
+
+        return view('conditions.look-back', compact('childSurvey', 'today', 'dayOfWeek'));
+    }
+
+    /**
+     * 1日の振り返りを保存
+     */
+    public function lookBackStore(Request $request, ChildSurvey $childSurvey)
+    {
+        $validated = $request->validate([
+            'evening_mood_rating' => 'required|integer|min:1|max:5',
+            'evening_health_rating' => 'required|integer|min:1|max:5',
+            'evening_headache' => 'nullable|boolean',
+            'evening_stomachache' => 'nullable|boolean',
+            'evening_fatigue' => 'nullable|boolean',
+            'evening_sleepiness' => 'nullable|boolean',
+            'evening_dizziness' => 'nullable|boolean',
+            'evening_appetite' => 'nullable|boolean',
+            'evening_notes' => 'nullable|string|max:1000',
+        ]);
+
+        $record = new DailyConditionRecord();
+        $record->child_survey_id = $childSurvey->id;
+        $record->record_date = Carbon::today()->format('Y-m-d');
+        $record->is_look_back = true;
+
+        // フォームからの値を保存
+        foreach ($validated as $key => $value) {
+            $record->$key = $value;
+        }
+
+        $record->save();
+
+        return redirect()->route('dashboard')->with('success', '1日の振り返りを記録しました。');
     }
 }

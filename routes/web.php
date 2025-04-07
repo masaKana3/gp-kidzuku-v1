@@ -67,6 +67,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/surveys/completed', [SurveyController::class, 'showCompletedPage'])->name('surveys.completed');
     Route::patch('/surveys/parent', [SurveyController::class, 'updateParentSurvey'])->name('surveys.parent.update');
     Route::patch('/surveys/child', [SurveyController::class, 'updateChildSurvey'])->name('surveys.child.update');
+
+    // 1日の振り返り（夜の体調記録）
+    Route::get('/conditions/{childSurvey}/look-back', [ConditionController::class, 'lookBackCreate'])->name('conditions.look_back.create');
+    Route::post('/conditions/{childSurvey}/look-back', [ConditionController::class, 'lookBackStore'])->name('conditions.look_back.store');
 });
 
 require __DIR__.'/auth.php';
